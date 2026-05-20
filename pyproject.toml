@@ -1,0 +1,28 @@
+[tool.ruff]
+#length of line
+line-length = 88
+target-version = "py311"
+
+#excluded files
+excclude = []
+fix = true
+
+[tool.ruff.lint]
+#rools on
+select = ["E", "F", "I", "UP"]
+ignore = []
+
+[tool.ruff.format]
+#formater settings
+quote-style = "double"
+indent-style = "space"
+
+#mypy settings
+[tool.mypy]
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+#Running the app
+[pyproject.scripts]
+datapipe = "datapipe.cli:main"

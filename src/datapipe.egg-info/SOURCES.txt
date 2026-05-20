@@ -1,0 +1,14 @@
+pyproject.toml
+src/datapipe/__init__.py
+src/datapipe/__main__.py
+src/datapipe/cli.py
+src/datapipe/config.py
+src/datapipe/decorators.py
+src/datapipe/filters.py
+src/datapipe/logger.py
+src/datapipe/reader.py
+src/datapipe/writer.py
+src/datapipe.egg-info/PKG-INFO
+src/datapipe.egg-info/SOURCES.txt
+src/datapipe.egg-info/dependency_links.txt
+src/datapipe.egg-info/top_level.txt

@@ -1,15 +1,14 @@
 import csv
-from typing import Optional, Generator
+from collections.abc import Generator
 from pathlib import Path
 
-file_path = Path("path.csv")
+from decorators import check_for_ext
 
-def read_csv(file_path: Path = file_path) -> Optional[Generator[list[str], None, None]]:
-    try:
+csv_path = Path("path.csv")
+
+@check_for_ext
+def read_csv(file_path: Path = csv_path) -> Generator[list[str], None, None]:
         with open(file_path, mode="r", encoding="utf-8") as file:
             reader = csv.reader(file, delimiter=",")
             for row in reader:
                 yield row
-    except Exception as e:
-        print(e)
-    return None
