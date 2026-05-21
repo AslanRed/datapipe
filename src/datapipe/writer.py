@@ -1,14 +1,18 @@
 import csv
 from collections.abc import Generator
 from pathlib import Path
+
 from rich import print as rprint
 
-from filters import filter_by_emptys
-from decorators import check_for_ext
+from .decorators import check_for_ext
+from .filters import filter_by_emptys
 
 
 @check_for_ext
-def write_csv(file_path: Path = Path("filtered.csv"), func: Generator[list[str], None, None] | None = None) -> None:
+def write_csv(
+    func: Generator[list[str], None, None] | None = None,
+    file_path: Path = Path("filtered.csv"),
+) -> None:
     with open(file_path, mode="w", encoding="utf-8") as out_f:
         writer = csv.writer(out_f, delimiter=",")
 

@@ -1,0 +1,27 @@
+repos:
+  # Официальный репозиторий ruff (линтер + форматтер)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.12          # замените на актуальную версию, можно обновить через pre-commit autoupdate
+    hooks:
+      # Линтер с автоисправлением
+      - id: ruff-check
+        args: [--fix, --exit-non-zero-on-fix]
+      # Форматтер кода
+      - id: ruff-format
+
+  # Официальный зеркало mypy для pre-commit
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.20.2         # актуальная версия mypy
+    hooks:
+      - id: mypy
+        args: [--config-file=pyproject.toml]
+        additional_dependencies:
+          - pydantic
+          - loguru
+          - rich
+          - typer
+          - pydantic_settings
+          # если нужны типы для pydantic
+          # - types-requests    # пример других зависимостей типов
+        # При необходимости добавьте verbose: true
+

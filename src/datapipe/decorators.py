@@ -1,11 +1,12 @@
-from typing import ParamSpec, TypeVar
-from functools import wraps
 from collections.abc import Callable
-from pathlib import Path
+from functools import wraps
 from inspect import signature
+from pathlib import Path
+from typing import ParamSpec, TypeVar
 
 P = ParamSpec("P")
 T = TypeVar("T")
+
 
 def check_for_ext(func: Callable[P, T]) -> Callable[P, T]:
     sig = signature(func)
@@ -23,10 +24,11 @@ def check_for_ext(func: Callable[P, T]) -> Callable[P, T]:
         if not isinstance(file_path, Path):
             file_path = Path(file_path)
 
-
         if file_path.suffix.lower() == ".csv":
             return func(*args, **kwargs)
         else:
-            raise ValueError(f"The file has {file_path.suffix.lower()} extencion, but expected '.csv'.")
+            raise ValueError(
+                f"The file has {file_path.suffix.lower()}, expected '.csv'."
+            )
 
     return wrapper
