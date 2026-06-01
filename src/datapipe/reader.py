@@ -8,7 +8,9 @@ csv_path = Path("path.csv")
 
 
 @check_for_ext
-def read_csv(file_path: Path = csv_path) -> Generator[list[str], None, None]:
-    with open(file_path, encoding="utf-8") as file:
+def read_csv(
+    file_path: Path = csv_path, encoding: str = "utf-8"
+) -> Generator[list[str], None, None]:
+    with open(file_path, encoding=encoding) as file:
         reader = csv.reader(file, delimiter=",")
         yield from reader
