@@ -31,3 +31,11 @@ def test_read_csv_encodings(tmp_path: Path, encoding: str, content: list) -> Non
 
     # Check for origin data to be the same as output data
     assert result == content
+
+
+def test_read_csv_wrong_extention(tmp_path: Path) -> None:
+    wrong_path = tmp_path / "data.txt"
+
+    # Check for error type and it's text
+    with pytest.raises(ValueError, match=r"The file has \.txt, expected \'.csv'\."):
+        read_csv(file_path=wrong_path)
